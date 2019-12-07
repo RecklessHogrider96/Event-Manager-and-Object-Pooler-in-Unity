@@ -3,39 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneHandler : MonoBehaviour
+namespace Core
 {
-    EventManager eventManager;
-    InputManager inputManager;
-    public GameObject[] requiredPrefabs;
-    // Start is called before the first frame update
-    void Awake()
+    public class SceneHandler : MonoBehaviour
     {
-        eventManager = EventManager.Instance;
-        inputManager = new InputManager();
-    }
-
-    private void Start()
-    {
-        InstantiateRequiredGameObjects();
-    }
-
-    private void InstantiateRequiredGameObjects()
-    {
-        foreach (GameObject prefab in requiredPrefabs)
+        EventManager eventManager;
+        InputManager inputManager;
+        public GameObject[] requiredPrefabs;
+        // Start is called before the first frame update
+        void Awake()
         {
-            Instantiate(prefab);
+            eventManager = EventManager.Instance;
+            inputManager = new InputManager();
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        eventManager.Update();
-        inputManager.Update();
-    }
-    private void OnDestroy()
-    {
-        eventManager.RemoveAll();
+        private void Start()
+        {
+            InstantiateRequiredGameObjects();
+        }
+
+        private void InstantiateRequiredGameObjects()
+        {
+            foreach (GameObject prefab in requiredPrefabs)
+            {
+                Instantiate(prefab);
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            eventManager.Update();
+            inputManager.Update();
+        }
+        private void OnDestroy()
+        {
+            eventManager.RemoveAll();
+        }
     }
 }

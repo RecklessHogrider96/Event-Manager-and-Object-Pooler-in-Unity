@@ -2,31 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Events
+namespace Core
 {
-    public class DragEvent : GameEvent
+    namespace Events
     {
-        public float swipeLength;
-        public DragDirection dragDirection;
-        public float swipeSpeed;
-        public DragInputLayerMask layerMask;
-        public bool isDragEnded;
-        public DragEvent(float swipeLength, DragDirection dragDirection, float swipeSpeed, bool isDragEnded, DragInputLayerMask layerMask)
+        public class DragEvent : GameEvent
         {
-            this.swipeLength = swipeLength;
-            this.dragDirection = dragDirection;
-            this.swipeSpeed = swipeSpeed;
-            this.isDragEnded = isDragEnded;
-            this.layerMask = layerMask;
+            public float swipeLength;
+            public DragDirection dragDirection;
+            public float swipeSpeed;
+            public DragInputLayerMask layerMask;
+            public bool isDragEnded;
+            public DragEvent(float swipeLength, DragDirection dragDirection, float swipeSpeed, bool isDragEnded, DragInputLayerMask layerMask)
+            {
+                this.swipeLength = swipeLength;
+                this.dragDirection = dragDirection;
+                this.swipeSpeed = swipeSpeed;
+                this.isDragEnded = isDragEnded;
+                this.layerMask = layerMask;
+            }
         }
-    }
 
-    public class NothoingEvent : GameEvent
-    {
-        public string working;
-        public NothoingEvent(string Working)
+        public class NothoingEvent : GameEvent
         {
-            this.working = Working;
+            public string working;
+            public NothoingEvent(string Working)
+            {
+                this.working = Working;
+            }
         }
     }
 }
