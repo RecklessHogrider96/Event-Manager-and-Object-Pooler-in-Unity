@@ -62,6 +62,7 @@ namespace Core
                 InitializePool(poolCount, distanceBetweenObstacles, pooledObject, parentTransform);
             }
 
+            // Pick the nearest inactive object in memory
             for (int i = 0; i < pooledObjects.Count; i++)
             {
                 if (!pooledObjects[i].activeInHierarchy)
@@ -69,7 +70,8 @@ namespace Core
                     return pooledObjects[i];
                 }
             }
-
+            
+            // To create random new objects/obstacles
             randomIndex = Random.Range(0, pooledObject.Length);
             GameObject obj = UnityEngine.Object.Instantiate(pooledObjects[randomIndex], parentTransform);
             pooledObjects.Add(obj);
